@@ -1,46 +1,81 @@
-let input, button;
-let gridNumber;
+let numberOfRows;
+let numberOfColumns;
+
+let xStep;
+let yStep;
+let positions = [];
 
 function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(window.innerWidth, window.innerHeight);
+    numberOfColumns = 24;
+    numberOfRows = 20;
 
-    input = createInput();
-    input.position(1250, 25);
+    xStep = width / numberOfColumns;
+    yStep = height / numberOfRows;
 
-    button = createButton('submit');
-    button.position(input.x + input.width, 25);
-    button.mousePressed(greet);
+    for (let x = 0; x < width; x += xStep) {
+        for (let y = 0; y < height; y += yStep) {
+            let p = createVector(x, y);
+            positions.push(p);
 
-
-    textAlign(CENTER);
-
+        }
+    }
 }
 
 function draw() {
-    for (let i = 0; i < height; i += height / 8) {
-        for (let j = 0; j < width; j += 100) {
-            line(0, i, width, i);
-            line(j, 0, j, height);
-            text(i + "/" + j, i, j);
-        }
+    fill(250, 100, 100);
+    for (let x = 0; x < positions.length; x++) {
+        text(x, positions[x].x, positions[x].y);
     }
 
-    ellipse() =
-
-
-
-        console.log(gridNumber);
+    rect(positions[292].x, positions[292].y, 120, 120)
 
 }
 
-function greet() {
-    const name = input.value();
-    input.value('');
-    fill(0);
-    text(name, width / 2, height / 2);
-}
+
+// let input, button;
+// let gridNumber;
+
+// function setup() {
+//     createCanvas(windowWidth, windowHeight);
+
+//     input = createInput();
+//     input.position(1250, 25);
+
+//     button = createButton('submit');
+//     button.position(input.x + input.width, 25);
+//     button.mousePressed(greet);
 
 
-function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
-}
+//     textAlign(CENTER);
+
+// }
+
+// function draw() {
+//     for (let i = 0; i < height; i += height / 8) {
+//         for (let j = 0; j < width; j += 100) {
+//             line(0, i, width, i);
+//             line(j, 0, j, height);
+//             text(i + "/" + j, i, j);
+//         }
+//     }
+
+//     ellipse() =
+
+
+
+//         console.log(gridNumber);
+
+// }
+
+// function greet() {
+//     const name = input.value();
+//     input.value('');
+//     fill(0);
+//     text(name, width / 2, height / 2);
+// }
+
+
+// function windowResized() {
+//     resizeCanvas(windowWidth, windowHeight);
+// }
